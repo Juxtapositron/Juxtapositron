@@ -1,4 +1,4 @@
-import.java.util
+import.java.util.ArrayList;
 public class WordPairList{
 
     private ArrayList<WordPair> allPairs;
@@ -12,4 +12,9 @@ public class WordPairList{
            }
      }
      // constructor
+
+     public int numsMatch(){
+       int x = 0;
+       return x;
+     }
 }
