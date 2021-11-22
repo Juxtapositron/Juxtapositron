@@ -5,16 +5,18 @@
   public class ReadFile {
     public static void main(String[] args) {
         try {
-            File file = new File(PUT_FILENAME_HERE);
+            File file = new File("data.txt");
+            int lineNumber = 0;
             Scanner input = new Scanner(file);
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-                System.out.println(line);
+                System.out.println(lineNumber + ": " + line);
+                lineNumber++;
             }
             input.close();
 
         } catch (FileNotFoundException ex) {
-            //File not found
+            System.out.println("You failed, dumbass!");
         }
     }
 }
