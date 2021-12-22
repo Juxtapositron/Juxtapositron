@@ -8,10 +8,9 @@ public class stringToInt{
 
   public static int stringToInt(String s){
     int x = 0;
-    for (int i = s.length()-1; i>0; i--){
-      x+= (valueOfDigit(s.charAt(s.length() - i - 1)) * Math.pow(10, i));
+    for (int i = 0; i < s.length(); i++){
+      x+= (valueOfDigit(s.charAt(i)) * Math.pow(10, s.length() - i - 1));
     }
-    x+=valueOfDigit(s.charAt(s.length()-1));
     return x;
   }
 
@@ -26,7 +25,7 @@ public class stringToInt{
     System.out.println(valueOfDigit('7'));
     System.out.println(valueOfDigit('8'));
     System.out.println(valueOfDigit('9'));
-    String s = "123443522536";
+    String s = "12344352";
     System.out.print(stringToInt(s));
   }
 }
