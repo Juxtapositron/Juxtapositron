@@ -8,6 +8,78 @@ public class WordSearch{
     private ArrayList<String>wordsToAdd = new ArrayList<>();
     private ArrayList<String>wordsAdded = new ArrayList<>();
 
+    /*
+    This program creates and prints a word search, made provided a file with a list of words, in a pseudorandom manner.
+    
+    Compile this and run using the terminal. Use the following syntax:
+    
+    java WordSearch <insert how many rows (int)> <insert how many cols (int)> fileName (either 0 or 1)  (seed)
+                            args[0]                    args[1]                 args[2]     args[3]      args[4]  
+                            
+    The first four arguments are necessary or else the program will print an error telling the user to use the correct syntax. Explanations of parameters:
+    
+    args[0] and args[1] determine the length and width of the word search respectively.
+    args[2] must be the name of a file in the directory of this file. The file must have the following format:
+    
+    (no lines above this)
+    WORD1
+    WORD2
+    WORD3
+    WORD4
+    .
+    .
+    .
+    WORDN
+    
+    and for the best result, all words are in caps. See animals.txt and fish.txt for examples.
+    
+    args[3] puts the program to normal mode (just prints puzzle) if it is 0, and gives the answer to a puzzle if it is 1. 
+    
+    args[4] is optional, but it provides a seed (an integer) to the program. You might wonder how to recall previous puzzles if it's random: well, 
+    because the random function is still a function, it outputs the same value if you give it the same seed (at least, on your device it should). 
+    The seed of every puzzle is printed along with the puzzle and the word, and you can use the seed as a kind of "password" to recall the same 
+    puzzle.
+    
+    Example terminal inputs and outputs:
+    
+    
+   In terminal: $java WordSearch 10 10 fish.txt 0
+   Output:
+   
+   
+P G U L F H D U Y T
+C F O Y K I Y S F H
+T C R L U C D H I J
+V W P Q D O X A E J
+P S S W C F P R K S
+A B T H H J I K M P
+C Q M D L A E S R I
+P A N U T Q L A H W
+N O M L A S C E U P
+G U F B L U B F T S
+words: [GOLDFISH, SHARK, SALMON, COD, WHALE, SQUID, TUNA, CARP]
+seed: 1082911974
+
+(I'm going to switch the mode to "answer mode" and use the seed given.)
+______________________________________________________________________
+    
+  In terminal:  $java WordSearch 10 10 fish.txt 1 1082911974
+  Output:
+  
+  G         D      
+    O     I   S    
+      L U   D H    
+      Q D O   A    
+    S W C F   R    
+        H   I K   P
+          A   S R  
+  A N U T   L A H  
+N O M L A S C E    
+                   
+words: [GOLDFISH, SHARK, SALMON, COD, WHALE, SQUID, TUNA, CARP]
+seed: 1082911974
+
+    */
     public static void main(String[] args) {
       try {
         WordSearch a;
@@ -25,7 +97,7 @@ public class WordSearch{
           error();
         }
 
-        if (args.length <= 3) {
+        if (args.length < 3) {
           System.out.println("Insufficient number of inputs");
           error();
         }
@@ -172,7 +244,7 @@ public class WordSearch{
     }
 
     public static void error() {
-      System.out.println("Please follow the following format:\njava WordSearch rows cols filename seed mode\nseed and mode (0 for normal, 1 for key) are optional");
+      System.out.println("Please follow the following format:\njava WordSearch rows cols filename mode seed \n seed is optional, and mode needs to be 0 for normal, 1 for key");
       System.exit(1);
     }
 }
